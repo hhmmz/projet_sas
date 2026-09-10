@@ -1,6 +1,11 @@
 const prompt = require("prompt-sync")();
 
+// =====================================
+// DATA
+// =====================================
+
 const trips = [
+
     {
         id: 1,
         departure: "Safi",
@@ -10,6 +15,7 @@ const trips = [
         price: 25,
         availableSeats: 50
     },
+
     {
         id: 2,
         departure: "Safi",
@@ -19,6 +25,7 @@ const trips = [
         price: 90,
         availableSeats: 50
     },
+
     {
         id: 3,
         departure: "Safi",
@@ -28,6 +35,7 @@ const trips = [
         price: 140,
         availableSeats: 50
     },
+
     {
         id: 4,
         departure: "Youssoufia",
@@ -37,6 +45,7 @@ const trips = [
         price: 65,
         availableSeats: 50
     },
+
     {
         id: 5,
         departure: "Youssoufia",
@@ -46,6 +55,7 @@ const trips = [
         price: 110,
         availableSeats: 50
     },
+
     {
         id: 6,
         departure: "Marrakech",
@@ -55,6 +65,7 @@ const trips = [
         price: 120,
         availableSeats: 50
     },
+
     {
         id: 7,
         departure: "Marrakech",
@@ -64,6 +75,7 @@ const trips = [
         price: 150,
         availableSeats: 50
     },
+
     {
         id: 8,
         departure: "Casablanca",
@@ -73,6 +85,7 @@ const trips = [
         price: 40,
         availableSeats: 50
     },
+
     {
         id: 9,
         departure: "Casablanca",
@@ -82,6 +95,7 @@ const trips = [
         price: 55,
         availableSeats: 50
     },
+
     {
         id: 10,
         departure: "Rabat",
@@ -91,6 +105,7 @@ const trips = [
         price: 30,
         availableSeats: 50
     },
+
     {
         id: 11,
         departure: "Rabat",
@@ -100,6 +115,7 @@ const trips = [
         price: 95,
         availableSeats: 50
     },
+
     {
         id: 12,
         departure: "Kenitra",
@@ -109,6 +125,7 @@ const trips = [
         price: 85,
         availableSeats: 50
     },
+
     {
         id: 13,
         departure: "Fes",
@@ -118,6 +135,7 @@ const trips = [
         price: 35,
         availableSeats: 50
     },
+
     {
         id: 14,
         departure: "Fes",
@@ -127,6 +145,7 @@ const trips = [
         price: 130,
         availableSeats: 50
     },
+
     {
         id: 15,
         departure: "Meknes",
@@ -136,6 +155,7 @@ const trips = [
         price: 80,
         availableSeats: 50
     },
+
     {
         id: 16,
         departure: "Meknes",
@@ -145,6 +165,7 @@ const trips = [
         price: 105,
         availableSeats: 50
     },
+
     {
         id: 17,
         departure: "Casablanca",
@@ -154,6 +175,7 @@ const trips = [
         price: 50,
         availableSeats: 50
     },
+
     {
         id: 18,
         departure: "El Jadida",
@@ -163,6 +185,7 @@ const trips = [
         price: 60,
         availableSeats: 50
     },
+
     {
         id: 19,
         departure: "Marrakech",
@@ -172,6 +195,7 @@ const trips = [
         price: 100,
         availableSeats: 50
     },
+
     {
         id: 20,
         departure: "Agadir",
@@ -181,176 +205,388 @@ const trips = [
         price: 95,
         availableSeats: 50
     }
+
 ];
 
 const tickets = [];
+
 let choice = null;
 
 
-// 1. Afficher les trajets
+// =====================================
+// 1. AFFICHER LES TRAJETS
+// =====================================
 
 function showtrips(arr) {
 
-for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
 
-console.log("============");
-console.log("id :", arr[i].id);
-console.log(arr[i].departure + " => " + arr[i].destination);
-console.log("___________");
-console.log("depart :", arr[i].departureTime);
-console.log("arrivée :", arr[i].arrivalTime);
-console.log("prix :", arr[i].price, "DH");
-console.log("places :", arr[i].availableSeats);
-}
-}
+        console.log("============");
 
+        console.log("id :", arr[i].id);
 
-// 2. Acheter un ticket
+        console.log(
+            arr[i].departure +
+            " => " +
+            arr[i].destination
+        );
 
-function ticketss(arr) {
+        console.log("depart :", arr[i].departureTime);
 
-let name = prompt("Nom du passager : ");
+        console.log("arrivée :", arr[i].arrivalTime);
 
-let id = Number(prompt("Id du trajet : "));
+        console.log("prix :", arr[i].price, "DH");
 
-let foundTrip = null;
-for (let i = 0; i < arr.length; i++) {
-
-if (arr[i].id === id) {
-
-foundTrip = arr[i];
-
-break;
-}
-}
-
-if (foundTrip === null) {
-
-console.log("Trajet introuvable");
-
-return;
-}
-
-if (foundTrip.availableSeats === 0) {
-
- console.log("Train complet");
-
-return;
-}
-
-let ticket = {
-id: tickets.length + 1,
-passengerName: name,
-tripId: id,
-seatNumber: 51 - foundTrip.availableSeats,
-price: foundTrip.price
-};
-
-tickets.push(ticket);
-
-foundTrip.availableSeats--;
-
- console.log("Ticket acheté avec succès");
-}
-
-
-
-//3. Afficher les tickets
-
-
-function showTickets(tickets) {
-
-for (let tick of tickets) {
-
-console.log("============");
-console.log("Ticket ID :", tick.id);
-console.log("Passager :", tick.passengerName);
-console.log("Trajet ID :", tick.tripId);
-console.log("Seat :", tick.seatNumber);
-console.log("Prix :", tick.price, "DH");
+        console.log("places :", arr[i].availableSeats);
     }
 }
 
 
-// Menu
+// =====================================
+// 2. ACHETER UN TICKET
+// =====================================
+
+function ticketss(arr) {
+
+    let name = prompt("Nom du passager : ");
+
+    let id = Number(
+        prompt("Id du trajet : ")
+    );
+
+    let foundTrip = null;
+
+    for (let i = 0; i < arr.length; i++) {
+
+        if (arr[i].id === id) {
+
+            foundTrip = arr[i];
+
+            break;
+        }
+    }
+
+    if (foundTrip === null) {
+
+        console.log("Trajet introuvable");
+
+        return;
+    }
+
+    if (foundTrip.availableSeats === 0) {
+
+        console.log("Train complet");
+
+        return;
+    }
+
+    let seat = 1;
+
+    while (seat <= 50) {
+
+        let occupied = false;
+
+        for (let i = 0; i < tickets.length; i++) {
+
+            if (
+                tickets[i].tripId === id &&
+                tickets[i].seatNumber === seat
+            ) {
+
+                occupied = true;
+            }
+        }
+
+        if (occupied === false) {
+
+            break;
+        }
+
+        seat++;
+    }
+
+    let ticket = {
+
+        id: tickets.length + 1,
+
+        passengerName: name,
+
+        tripId: id,
+
+        seatNumber: seat,
+
+        price: foundTrip.price
+    };
+
+    tickets.push(ticket);
+
+    foundTrip.availableSeats--;
+
+    console.log("Ticket acheté avec succès");
+}
+
+
+// =====================================
+// 3. AFFICHER LES TICKETS
+// =====================================
+
+function showTickets(tickets) {
+
+    if (tickets.length === 0) {
+
+        console.log("Aucun ticket enregistré");
+
+        return;
+    }
+
+    for (let tick of tickets) {
+
+        console.log("============");
+
+        console.log("Ticket ID :", tick.id);
+
+        console.log("Passager :", tick.passengerName);
+
+        console.log("Trajet ID :", tick.tripId);
+
+        console.log("Seat :", tick.seatNumber);
+
+        console.log("Prix :", tick.price, "DH");
+    }
+}
+
+
+// =====================================
+// 4. ANNULER UN TICKET
+// =====================================
+
+function cancelTicket() {
+
+    let id = Number(
+        prompt("Identifiant du ticket : ")
+    );
+
+    let foundTicket = null;
+
+    let ticketIndex = -1;
+
+    for (let i = 0; i < tickets.length; i++) {
+
+        if (tickets[i].id === id) {
+
+            foundTicket = tickets[i];
+
+            ticketIndex = i;
+
+            break;
+        }
+    }
+
+    if (foundTicket === null) {
+
+        console.log("Ticket introuvable");
+
+        return;
+    }
+
+    for (let i = 0; i < trips.length; i++) {
+
+        if (trips[i].id === foundTicket.tripId) {
+
+            trips[i].availableSeats++;
+
+            break;
+        }
+    }
+
+    tickets.splice(ticketIndex, 1);
+
+    console.log("Ticket annulé avec succès");
+}
+
+
+// =====================================
+// 5. RECHERCHER UN TICKET
+// =====================================
+
+function searchTicket() {
+
+    let name = prompt("Nom du passager : ");
+
+    let found = false;
+
+    for (let i = 0; i < tickets.length; i++) {
+
+        if (
+            tickets[i].passengerName.toLowerCase() ===
+            name.toLowerCase()
+        ) {
+
+            console.log("============");
+
+            console.log("Ticket ID :", tickets[i].id);
+
+            console.log("Passager :", tickets[i].passengerName);
+
+            console.log("Trajet ID :", tickets[i].tripId);
+
+            console.log("Seat :", tickets[i].seatNumber);
+
+            console.log("Prix :", tickets[i].price, "DH");
+
+            found = true;
+        }
+    }
+
+    if (found === false) {
+
+        console.log("Aucun ticket trouvé");
+    }
+}
+
+
+// =====================================
+// 6. FILTRER LES TRAJETS
+// =====================================
+
+function filterTrips(arr) {
+
+    let departure = prompt("Ville de départ : ");
+
+    let result = [];
+
+    for (let i = 0; i < arr.length; i++) {
+
+        if (
+            arr[i].departure.toLowerCase() ===
+            departure.toLowerCase()
+        ) {
+
+            result.push(arr[i]);
+        }
+    }
+
+    return result;
+}
+
+
+// =====================================
+// 7. TRIER LES TRAJETS
+// =====================================
+
+function sortTrips(arr) {
+
+    let result = [...arr];
+
+    result.sort(function(a, b) {
+
+        return a.price - b.price;
+
+    });
+
+    return result;
+}
+
+
+// =====================================
+// MENU
+// =====================================
 
 while (choice !== 0) {
 
-console.log("==============================");
-console.log("       RAILWAY MANAGER        ");
-console.log("==============================");
+    console.log("==============================");
 
-console.log("1. Afficher les trajets");
-console.log("2. Acheter un ticket");
-console.log("3. Afficher les tickets");
-console.log("4. Annuler un ticket");
-console.log("5. Rechercher un ticket");
-console.log("6. Filtrer les trajets");
-console.log("7. Trier les trajets");
-console.log("0. Quitter");
+    console.log("       RAILWAY MANAGER");
 
-choice = Number(prompt("Votre choix : "));
+    console.log("==============================");
 
-switch (choice) {
+    console.log("1. Afficher les trajets");
 
-case 0:
- break;
+    console.log("2. Acheter un ticket");
 
- case 1:
-showtrips(trips);
-break;
+    console.log("3. Afficher les tickets");
 
-case 2:
-ticketss(trips);
-break;
-case 3 :
-    showTickets(tickets);
-break;
+    console.log("4. Annuler un ticket");
 
-default:
-console.log("makaynch");
-break;
+    console.log("5. Rechercher un ticket");
+
+    console.log("6. Filtrer les trajets");
+
+    console.log("7. Trier les trajets");
+
+    console.log("0. Quitter");
+
+    choice = Number(
+        prompt("Votre choix : ")
+    );
+
+    switch (choice) {
+
+        case 0:
+
+            console.log("Au revoir");
+
+            break;
+
+        case 1:
+
+            showtrips(trips);
+
+            break;
+
+        case 2:
+
+            ticketss(trips);
+
+            break;
+
+        case 3:
+
+            showTickets(tickets);
+
+            break;
+
+        case 4:
+
+            cancelTicket();
+
+            break;
+
+        case 5:
+
+            searchTicket();
+
+            break;
+
+        case 6: {
+
+            let filteredTrips = filterTrips(trips);
+
+            if (filteredTrips.length === 0) {
+
+                console.log("Aucun trajet trouvé");
+
+            } else {
+
+                showtrips(filteredTrips);
+            }
+
+            break;
+        }
+
+        case 7: {
+
+            let sortedTrips = sortTrips(trips);
+
+            showtrips(sortedTrips);
+
+            break;
+        }
+
+        default:
+
+            console.log("Choix invalide");
+
+            break;
+    }
 }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
