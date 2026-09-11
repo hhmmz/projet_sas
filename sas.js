@@ -212,6 +212,7 @@ let choice = null
 
 // =====================================
 // 1. AFFICHER LES TRAJETS
+// =====================================
 function showtrips(arr) {
 
 for (let i = 0; i < arr.length; i++) {
@@ -352,7 +353,7 @@ function searchTicket() {
     let name = prompt("Nom du passager : ")
     let found = false;
 for (let i = 0; i < tickets.length; i++) {
-    if (tickets[i].passengerName.toLowerCase() ===name.toLowerCase())
+    if (tickets[i].passengerName.toLowerCase().trim() ===name.toLowerCase().trim())
     {
     console.log("============")
     console.log("Ticket ID :", tickets[i].id)
