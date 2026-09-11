@@ -379,7 +379,7 @@ function filterTrips(arr) {
     let departure = prompt("ville de départ : ")
     let result = [];
     for (let i = 0; i < arr.length; i++) {
-    if (arr[i].departure.toLowerCase() ===departure.toLowerCase()) {
+    if (arr[i].departure.toLowerCase().trim() ===departure.toLowerCase().trim()) {
         result.push(arr[i])
     }
 }
