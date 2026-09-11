@@ -210,9 +210,9 @@ const tickets = []
 let choice = null
 
 
-// =====================================
+
 // 1. AFFICHER LES TRAJETS
-// =====================================
+
 function showtrips(arr) {
 
 for (let i = 0; i < arr.length; i++) {
@@ -227,9 +227,9 @@ for (let i = 0; i < arr.length; i++) {
 }
 
 
-// =====================================
+
 // 2. ACHETER UN TICKET
-// =====================================
+
 
 function ticketss(arr) {
     let name = prompt("nom du passager : ")
@@ -285,9 +285,8 @@ let ticket = {
 }
 
 
-// =====================================
+
 // 3. AFFICHER LES TICKETS
-// =====================================
 
 function showTickets(tickets) {
 
@@ -307,9 +306,9 @@ for (let tick of tickets) {
 }
 
 
-// =====================================
+
 // 4. ANNULER UN TICKET
-// =====================================
+
 
 function cancelTicket() {
 
@@ -344,9 +343,9 @@ console.log("ticket annulé avec succès")
 }
 
 
-// =====================================
+
 // 5. RECHERCHER UN TICKET
-// =====================================
+
 
 function searchTicket() {
 
@@ -370,9 +369,9 @@ for (let i = 0; i < tickets.length; i++) {
 }
 
 
-// =====================================
+
 // 6. FILTRER LES TRAJETS
-// =====================================
+
 
 function filterTrips(arr) {
 
@@ -387,9 +386,8 @@ return result;
 }
 
 
-// =====================================
 // 7. TRIER LES TRAJETS
-// =====================================
+
 
 function sortTrips(arr) {
     let result = [...arr];
@@ -398,9 +396,7 @@ function sortTrips(arr) {
 }
 
 
-// =====================================
-// MENU
-// =====================================
+
 
 while (choice !== 0) {
 
