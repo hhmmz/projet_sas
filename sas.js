@@ -312,21 +312,21 @@ for (let tick of tickets) {
 
 function cancelTicket() {
 
-    let id = Number(
-        prompt("identifiant du ticket : ")
+    let id = Number(prompt("identifiant du ticket : ")
     )
     let foundTicket = null
     let ticketIndex = -1
     for (let i = 0; i < tickets.length; i++) {
 
     if (tickets[i].id === id) {
-        foundTicket = tickets[i]
-        ticketIndex = i
-        break;
+    foundTicket = tickets[i]
+    ticketIndex = i
+    break;
     }
 }
 
-if (foundTicket === null) {
+if (foundTicket === null)
+     {
     console.log("ticket introuvable")
 
     return;
@@ -400,9 +400,9 @@ function sortTrips(arr) {
 
 while (choice !== 0) {
 
-    console.log("||============================||")
+    console.log("============================")
     console.log("       RAILWAY MANAGER")
-    console.log("||============================||")
+    console.log("============================")
     console.log("1. Afficher les trajets")
     console.log("2. Acheter un ticket")
     console.log("3. Afficher les tickets")
